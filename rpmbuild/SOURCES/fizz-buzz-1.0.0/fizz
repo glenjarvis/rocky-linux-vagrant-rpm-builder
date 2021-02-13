@@ -1,0 +1,48 @@
+#!/usr/libexec/platform-python
+
+"""A hello world example for rpmbuild demo"""
+
+import sys
+
+
+def fizz(start_num):
+    """Print number or FizzBuzz combination"""
+
+    for num in range(start_num, 0, -1):
+        if num % 3 == 0 and num % 5 == 0:
+            print("Fizz Buzz")
+        elif num % 5 == 0:
+            print("Buzz")
+        elif num % 3 == 0:
+            print("Fizz")
+        else:
+            print(num)
+
+
+def error_and_exit(arg, return_code):
+    """Ensure argument is positive numeric"""
+
+    sys.stdout.write("Argument should be postive numeric, ")
+    sys.stdout.write(f'(not "{arg}")\n')
+    sys.exit(return_code)
+
+
+def main(arg):
+    """Main entry point"""
+
+    try:
+        num = int(arg)
+    except ValueError:
+        error_and_exit(arg, 1)
+
+    if num < 1:
+        error_and_exit(arg, 2)
+
+    fizz(num)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]}fizz <number>")
+    else:
+        main(sys.argv[1])

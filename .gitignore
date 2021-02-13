@@ -1,1 +1,4 @@
 .vagrant
+rpmbuild/BUILDROOT/*
+rpmbuild/RPMS/*
+rpmbuild/SRPMS/*
